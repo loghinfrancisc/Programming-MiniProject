@@ -6,5 +6,10 @@ public class Server {
 		//hello world!
 		//Roberts test 11:14
 		//Test test
+		//WOW
+		//MI HOW
+		//Nihaw 2.0
+		
+		// testing maja more testinghsdfjhdsjfdsj 
 	}
 }
