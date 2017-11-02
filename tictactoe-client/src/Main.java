@@ -14,13 +14,13 @@ public static class Main implements ActionListener {
     ImageIcon O;
     ImageIcon letter;
     int val = 0;
-    String[] boardState = new String[9];
+    String[] board = new String[9];
     boolean yourTurn = true;
     
     
     public void Main( ) {  //createGame void
     		for ( int i = 0; i < 9; i++) {
-    			boardState[i] = "";
+    			board[i] = "";
     		}
     		
     		// Assign images
@@ -66,7 +66,7 @@ public static class Main implements ActionListener {
                 button[i].setIcon(letter);
                 button[i].setDisabledIcon(letter);
                 button[i].setEnabled(false);
-                boardState[i] = letterString;
+                board[i] = letterString;
             }   
             
         }
@@ -74,7 +74,7 @@ public static class Main implements ActionListener {
         //maybe we gonna use it later, dunno
      /*   private boolean wantsToPlayAgain() {
             int response = JOptionPane.showConfirmDialog(frame,
-                "Want to play again?",
+                "Want to play again with my dick?",
                 JOptionPane.YES_NO_OPTION);
             frame.dispose();
             return response == JOptionPane.YES_OPTION;
