@@ -47,7 +47,6 @@ public static class Main implements ActionListener {
     		}
     
     public void actionPerformed(ActionEvent a) {
-        //value++;
         // Who's Turn
         if (yourTurn == true) {
             letter = X;
