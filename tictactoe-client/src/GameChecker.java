@@ -43,7 +43,7 @@ public class GameChecker extends Main
 	//add if statements to check through all 8 possible winning conditions in tic tac toe
 	public boolean winCheck(boolean win) 
 	{
-		//int boardState[] = {0,0,0,0,0,0,0,0,0};
+		//int boardState[] = {0,0,0,0,0,0,0,0,0}; not using ints but array of Clients instead
 		
 		for (int i = 0; i < board.length; i++)
 			for(int j = 0; j < board.length; j++)		
