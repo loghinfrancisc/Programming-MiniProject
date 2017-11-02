@@ -27,7 +27,7 @@ public static class Main implements ActionListener {
             X = new ImageIcon(getClass().getResource("xxx.png"));
             O = new ImageIcon(getClass().getResource("ooo.png"));
             
-            window.setSize(1000,1000);
+            window.setSize(500,500);
             window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             window.setLayout(new GridLayout(3,3));
             
