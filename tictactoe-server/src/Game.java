@@ -10,8 +10,8 @@ public Game(Client pl1, Client pl2, char X, char O)
 {
 player1=pl1;
 player2=pl2;
-sign.pl1=X;
-sign.pl2=O;
+sign.pl1='X';
+sign.pl2='O';
 }
 
 //boolean winCheck = false;
