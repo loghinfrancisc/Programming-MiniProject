@@ -2,17 +2,20 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Main implements ActionListener {
+public static void main(String[] args) {	
 
-	JFrame window = new JFrame("Tic Tac Toe");
+public static class Main implements ActionListener {
+
+	JFrame window = new JFrame("Tic Tac Toe Server-Client project, group 301");
     JButton button[] = new JButton[9];
 
-    String letter = "";
+    String letterString = "";
     ImageIcon X;
     ImageIcon O;
-    ImageIcon ltr;
+    ImageIcon letter;
     int val = 0;
     String[] boardState = new String[9];
+    boolean yourTurn = true;
     
     
     public void Main( ) {  //createGame void
@@ -21,10 +24,10 @@ public class Main implements ActionListener {
     		}
     		
     		// Assign images
-            X = new ImageIcon(getClass().getResource(""));
-            O = new ImageIcon(getClass().getResource(""));
+            X = new ImageIcon(getClass().getResource("xxx.png"));
+            O = new ImageIcon(getClass().getResource("ooo.png"));
             
-            window.setSize(500,500);
+            window.setSize(1000,1000);
             window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             window.setLayout(new GridLayout(3,3));
             
@@ -42,39 +45,43 @@ public class Main implements ActionListener {
             window.setVisible(true);
             
     		}
+    
     public void actionPerformed(ActionEvent a) {
-        value++;
+        //value++;
         // Who's Turn
-        if (value % 2 == 1) {
-            ltr = X;
-            letter = "X";
+        if (yourTurn == true) {
+            letter = X;
+            letterString = "X";
+            yourTurn = false;
         }
-        if (value % 2 == 0) {
-            ltr = O;
-            letter = "O";
+        if (yourTurn == false) {
+            letter = O;
+            letterString = "O";
+            yourTurn = true;
         }
 
         // Display Letters
         for (int i = 0; i < 9; i++) {
-            if (a.getSource() == b[i]) {
-                button[i].setIcon(ltr);
-                button[i].setDisabledIcon(ltr);
+            if (a.getSource() == button[i]) {
+                button[i].setIcon(letter);
+                button[i].setDisabledIcon(letter);
                 button[i].setEnabled(false);
-                boardState[i] = letter;
+                boardState[i] = letterString;
             }   
             
         }
-        
-        private boolean wantsToPlayAgain() {
+      
+        //maybe we gonna use it later, dunno
+     /*   private boolean wantsToPlayAgain() {
             int response = JOptionPane.showConfirmDialog(frame,
                 "Want to play again?",
                 JOptionPane.YES_NO_OPTION);
             frame.dispose();
             return response == JOptionPane.YES_OPTION;
-        }
+        } */
     
-	public static void main(String[] args) {	
-		new Main();	
+		}
+    
 	}
-	//don't do anything before this
+
 }
