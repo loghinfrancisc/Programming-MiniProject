@@ -15,7 +15,7 @@ public class Main implements ActionListener {
     String[] boardState = new String[9];
     
     
-    public TicTacToe( ) {
+    public void Main( ) {  //createGame void
     		for ( int i = 0; i < 9; i++) {
     			boardState[i] = "";
     		}
@@ -61,8 +61,16 @@ public class Main implements ActionListener {
                 button[i].setDisabledIcon(ltr);
                 button[i].setEnabled(false);
                 boardState[i] = letter;
-            }
+            }   
             
+        }
+        
+        private boolean wantsToPlayAgain() {
+            int response = JOptionPane.showConfirmDialog(frame,
+                "Want to play again?",
+                JOptionPane.YES_NO_OPTION);
+            frame.dispose();
+            return response == JOptionPane.YES_OPTION;
         }
     
 	public static void main(String[] args) {	
