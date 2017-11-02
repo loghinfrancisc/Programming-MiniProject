@@ -10,13 +10,24 @@ public Game(Client pl1, Client pl2)
 player1=pl1;
 player2=pl2;
 }
+/*You could also add something like this to your functions
+ if(player1==pl1){(pl1 being the client thats passed down to you)
+ player2.output.outputCMD("Whatever commands you want to send");
+ player2.send();
+ }
+ else if(player2==pl1){
+ player1.output.outputCMD("Whatever commands you want to send");
+ player1.send();
+ }
+ */
+
 //String inputCMD = input.readLine();
 boolean winCheck = false;
 boolean tieCheck = false;
 String MSG;
 
 
-public boolean startGame(String inputCMD)
+public boolean startGame(String inputCMD)//Im not sure if this is needed, as the game class only gets created when the game is ready to start
 {
 	if(inputCMD.startsWith("START"))
 	{
@@ -68,8 +79,9 @@ else if(tieCheck==true)
 return MSG;
 	}
 //BOARD
+//Think we need to move this board clientside, dont think there is much use to it in here
+//Client array for every square of the board, so we can assign each square to a person 
 
-//Client array for every square of the board, so we can assign each square to a person
 private Client[] board = {
 		null, null, null, 
 		null, null, null, 
