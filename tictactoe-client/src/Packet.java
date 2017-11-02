@@ -15,6 +15,7 @@ public class Packet {
 	public gameCheckerCommand: int;
 	public gameCheckerNo: int;
 	public squareCheckerNo: int;
+	//testing
 	
 	
 }
