@@ -9,6 +9,7 @@ public class Client extends Thread{
 	boolean inGame=false;
 	Packet incoming;
 	Packet output;
+	char sign;
 Client(Socket sock){
 	socket=sock;
 	try {
