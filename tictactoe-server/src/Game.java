@@ -5,29 +5,22 @@ protected Socket socket;
 Client player1=null;
 Client player2=null;
 Client currentPlayer=player1;
-public Game(Client pl1, Client pl2) 
+char sign;
+public Game(Client pl1, Client pl2, char X, char O) 
 {
 player1=pl1;
 player2=pl2;
+sign.pl1=X;
+sign.pl2=O;
 }
-/*You could also add something like this to your functions
- if(player1==pl1){(pl1 being the client thats passed down to you)
- player2.output.outputCMD("Whatever commands you want to send");
- player2.send();
- }
- else if(player2==pl1){
- player1.output.outputCMD("Whatever commands you want to send");
- player1.send();
- }
- */
 
-//String inputCMD = input.readLine();
-boolean winCheck = false;
-boolean tieCheck = false;
-String MSG;
+//boolean winCheck = false;
+//boolean tieCheck = false;
+String CMD;
+String outputCMD;
 
-
-public boolean startGame(String inputCMD)//Im not sure if this is needed, as the game class only gets created when the game is ready to start
+/*
+public boolean startGame(String inputCMD)
 {
 	if(inputCMD.startsWith("START"))
 	{
@@ -35,7 +28,7 @@ public boolean startGame(String inputCMD)//Im not sure if this is needed, as the
 	}
 	return false;
 }
-
+*/
 
 //Here we add all of the features of the actual game, once the two clients have connected to each other
 
@@ -44,13 +37,15 @@ void conditionListener(String inputCMD, Client pl1)
 	if (inputCMD.startsWith("WIN"))
 	{
 	//won();
-	winCheck = true;
+	//winCheck = true;
+	CMD = "WIN";
 	}
 	
 	else if(inputCMD.startsWith("TIE"))
 	{
 	//boardFilled();
-	tieCheck = true;
+	//tieCheck = true;
+	CMD = "TIE";
 	}
 }
 
@@ -64,24 +59,24 @@ void moveListener(String inputCMD, int location, Client pl1)
 	}
 }
 
-public String update(Client p1, Client p2, String outputCMD)
+public void update(Client pl1)
 {
 // take all info, send it to client handler (player 2)
-if(winCheck==true)
+while(true)
 {
-	MSG = p1 + " has won";
-	
-}
-else if(tieCheck==true)
+if(player1==pl1)
 {
-	MSG = "is a tie";
+player2.output.outputCMD( CMD );
+player2.send();
 }
-return MSG;
-	}
+else if(player2==pl1){
+player1.output.outputCMD( CMD );
+player1.send();
+}
+}
 //BOARD
-//Think we need to move this board clientside, dont think there is much use to it in here
-//Client array for every square of the board, so we can assign each square to a person 
 
+//Client array for every square of the board, so we can assign each square to a person
 private Client[] board = {
 		null, null, null, 
 		null, null, null, 
