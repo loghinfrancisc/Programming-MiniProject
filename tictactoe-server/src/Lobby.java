@@ -28,7 +28,7 @@ public class Lobby {
 			else {
 				//tell the client that he is unable to join game
 				player.output.lobbyMSG="FAILED_JOIN";
-				player.send();
+				player.send();  // sends back message to client 
 			}
 		}
 		else if(no == 2) {//player wants to join game no 2
@@ -42,7 +42,7 @@ public class Lobby {
 			else {
 				//tell the client that he is unable to join the game
 				player.output.lobbyMSG="FAILED_JOIN";
-				player.send();
+				player.send(); // sends back message to client 
 			}
 		}
 	}
