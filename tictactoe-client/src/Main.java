@@ -87,6 +87,8 @@ public class Main implements ActionListener { //why the hell are there two mains
 		}
 	}
 	//this is code from the Lobby, the Main class had this methods 
+	
+	//create game
 	public static void createGame(Client player) {// called when the client requests to create a game
 		if(waitingForGame[0] == null) {// if the first game is not created(no user in this slot)
 			waitingForGame[0] = player; // assign user to this slot
@@ -99,8 +101,10 @@ public class Main implements ActionListener { //why the hell are there two mains
 			player.output.lobbyMSG="FAILED_CREATE";
 			player.send();
 		}
-		}
-		public static void joinGame(Client player, int no) { // join game
+	}
+	
+	//join game
+	public static void joinGame(Client player, int no) { // join game
 			if(no == 1) {// player wants to join game no 1
 				if(waitingForGame[1] == null) {// if the slot is open
 					waitingForGame[1] = player;// assign the user to that slot
@@ -129,15 +133,17 @@ public class Main implements ActionListener { //why the hell are there two mains
 					player.send(); // sends back message to client 
 				}
 			}
-		}
-		public static void closeGame(Client player, int no) {// if a user wants to close a game
+	}
+	
+	//close game
+	public static void closeGame(Client player, int no) {// if a user wants to close a game
 			if(no == 1 && waitingForGame[0] == player) {// if he wants to close the first game, and is indeed the creator of that
 				waitingForGame[0] = null;// remove him from the slot
 			}
 			else if(no == 2 && waitingForGame[2] == pl) {// same here
 				waitingForGame[2] = null;
 			}
-		}
+	}
 
 
 	
