@@ -10,6 +10,7 @@ public class Client extends Thread{
 	char sign = null;
 	Packet incoming;
 	Packet output;
+	char sign;
 Client(Socket sock){
 	socket=sock;
 	try {

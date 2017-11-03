@@ -39,9 +39,11 @@ public class GameChecker extends Main
 
 	//player1Win CONDITION
 
-	//add if statements to check through all 8 possible player1Winning conditions in tic tac toe
-	public boolean WinCheck(boolean player1Win, boolean player2Win) 
-	{	
+	//add if statements to check through all 8 possible winning conditions in tic tac toe
+	public boolean winCheck() 
+	{
+		//int boardState[] = {0,0,0,0,0,0,0,0,0}; not using ints but array of Clients instead
+		
 		for (int i = 0; i < board.length; i++)
 			for(int j = 0; j < board.length; j++)		
 		{
@@ -151,21 +153,13 @@ public class GameChecker extends Main
 	//ALLOWED MOVE
 
 
-We also need to check if the move is allowed, when player clicks the squares. 
-That is, we need to check, if the player is the currentPlayer 
-and if the square is already taken.
-if the move is allowed, perform action, which is, assign the selected square to
-the currentPlayer, change the currentPlayer,
-and call a function for the opponent that the currentPlayer moved
 
-*/
-	
-	public boolean allowedMove(int squareNo, Client pl1)
-	{
-		 if(Main.yourTurn == true && squareNo == null )  // if conditions are true
-		 {
-			 board[squareNo] = pl1;
-			 
+		public boolean allowedMove(int squareNo, boolean currentPlayer)
+		{
+		 if(pl1 == isCurrentPlayer && squareNo == null )  // if conditions are true
+			 {
+			 isCurrentPlayer == true;
+			 isCurrentPlayer = squareNo;
 			 //perform actions, 
 			 
 			 return true;
