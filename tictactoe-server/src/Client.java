@@ -7,6 +7,7 @@ public class Client extends Thread{
 	ObjectInputStream ois;
 	static int gameNo=0;
 	boolean inGame=false;
+	char sign = null;
 	Packet incoming;
 	Packet output;
 Client(Socket sock){

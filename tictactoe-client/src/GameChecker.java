@@ -100,11 +100,11 @@ public class GameChecker extends Main
 	//if the move is allowed, perform action, which is, assign the selected square to the currentPlayer, change the currentPlayer,
 	//and call a function for the opponent that the currentPlayer moved
 
-		public boolean allowedMove(int squareNo, Client pl1)
+		public boolean allowedMove(int squareNo, boolean currentPlayer)
 		{
 		 if(pl1 == isCurrentPlayer && squareNo == null )  // if conditions are true
 			 {
-			 Main.isCurrentPlayer == true;
+			 isCurrentPlayer == true;
 			 isCurrentPlayer = squareNo;
 			 
 			 //perform actions, 
