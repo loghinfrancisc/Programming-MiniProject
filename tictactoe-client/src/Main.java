@@ -2,7 +2,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public static void main(String[] args) {	
 
 public static class Main implements ActionListener {
 
@@ -17,8 +16,8 @@ public static class Main implements ActionListener {
     String[] board = new String[9];
     boolean yourTurn = true;
     
-    
-    public void Main( ) {  //createGame void
+
+    public Main() {  //createGame void - what game void ???? - Marius
     		for ( int i = 0; i < 9; i++) {
     			board[i] = "";
     		}
@@ -27,7 +26,7 @@ public static class Main implements ActionListener {
             X = new ImageIcon(getClass().getResource("xxx.png"));
             O = new ImageIcon(getClass().getResource("ooo.png"));
             
-            window.setSize(500,500);
+window.setSize(500,500);
             window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             window.setLayout(new GridLayout(3,3));
             
@@ -44,8 +43,8 @@ public static class Main implements ActionListener {
 
             window.setVisible(true);
             
-    		}
-    
+
+    }
     public void actionPerformed(ActionEvent a) {
         // Who's Turn
         if (yourTurn == true) {
@@ -53,7 +52,8 @@ public static class Main implements ActionListener {
             letterString = "X";
             yourTurn = false;
         }
-        if (yourTurn == false) {
+
+        else if (yourTurn == false) {
             letter = O;
             letterString = "O";
             yourTurn = true;
@@ -66,8 +66,7 @@ public static class Main implements ActionListener {
                 button[i].setDisabledIcon(letter);
                 button[i].setEnabled(false);
                 board[i] = letterString;
-            }   
-            
+            }      
         }
       
         //maybe we gonna use it later, dunno
@@ -78,9 +77,9 @@ public static class Main implements ActionListener {
             frame.dispose();
             return response == JOptionPane.YES_OPTION;
         } */
-    
-		}
-    
 	}
 
+
+	
 }
+

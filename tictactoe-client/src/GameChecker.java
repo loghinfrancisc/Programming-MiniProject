@@ -1,7 +1,6 @@
 import java.net.Socket;
 
 public class GameChecker extends Main
-
 {
 	GameChecker(Socket sock) {
 		super(sock);
@@ -38,67 +37,122 @@ public class GameChecker extends Main
 	}
 	
 
-	//WIN CONDITION
+	//player1Win CONDITION
 
 	//add if statements to check through all 8 possible winning conditions in tic tac toe
-	public boolean winCheck(boolean win) 
+	public boolean winCheck() 
 	{
 		//int boardState[] = {0,0,0,0,0,0,0,0,0}; not using ints but array of Clients instead
 		
 		for (int i = 0; i < board.length; i++)
 			for(int j = 0; j < board.length; j++)		
 		{
+			//checks if Player 1 wins 
 			if(board[0] == pl1 && board[1] == pl1 && board[2] == pl1) // horizontal 1
 			{
-				win = true;
+				player1Win = true;
+				return player1Win;
 			}
 			
-			else if(board[3] == 1 && board[4] == 1 && board[5] == 1) // horizontal 2
+			else if(board[3] == pl1 && board[4] == pl1 && board[5] == pl1) // horizontal 2
 			{
-				win = true;
+				player1Win = true;
+				return player1Win;
 			}
 			
-			if(board[6] == 1 && board[7] == 1 && board[8] == 1) // horizontal 3
+			if(board[6] == pl1 && board[7] == pl1 && board[8] == pl1) // horizontal 3
 			{
-				win = true;
+				player1Win = true;
+				return player1Win;
 			}
 			
-			else if(board[0] == 1 && board[4] == 1 && board[8] == 1) // diagonal 1
+			else if(board[0] == pl1 && board[4] == pl1 && board[8] == pl1) // diagonal 1
 			{
-				win = true;
+				player1Win = true;
+				return player1Win;
 			}
 			
-			if(board[6] == 1 && board[4] == 1 && board[2] == 1) // diagonal 2
+			if(board[6] == pl1 && board[4] == pl1 && board[2] == pl1) // diagonal 2
 			{
-				win = true;
+				player1Win = true;
+				return player1Win;
 			}
 			
-			else if(board[0] == 1 && board[3] == 1 && board[6] == 1) // vertical 1
+			else if(board[0] == pl1 && board[3] == pl1 && board[6] == pl1) // vertical 1
 			{
-				win = true;
+				player1Win = true;
+				return player1Win;
 			}
 			
-			if(board[1] == 1 && board[4] == 1 && board[7] == 1) // vertical 2
+			if(board[1] == pl1 && board[4] == pl1 && board[7] == pl1) // vertical 2
 			{
-				win = true;
+				player1Win = true;
+				return player1Win;
 			}
 			
-			else if(board[2] == 1 && board[5] == 1 && board[8] == 1) // vertical 3
+			else if(board[2] == pl1 && board[5] == pl1 && board[8] == pl1) // vertical 3
 			{
-				win = true;
+				player1Win = true;
+				return player1Win;
 			}	
+			
+			//checks if Player 2 wins 
+			if(board[0] == pl2 && board[1] == pl2 && board[2] == pl2) // horizontal 1
+			{
+				player2Win = true;
+				return player2Win;
+			}
+			
+			else if(board[3] == pl2 && board[4] == pl2 && board[5] == pl2) // horizontal 2
+			{
+				player2Win = true;
+				return player2Win;
+			}
+			
+			if(board[6] == pl2 && board[7] == pl2 && board[8] == pl2) // horizontal 3
+			{
+				player2Win = true;
+				return player2Win;
+			}
+			
+			else if(board[0] == pl2 && board[4] == pl2 && board[8] == pl2) // diagonal 1
+			{
+				player2Win = true;
+				return player2Win;
+			}
+			
+			if(board[6] == pl2 && board[4] == pl2 && board[2] == pl2) // diagonal 2
+			{
+				player2Win = true;
+				return player2Win;
+			}
+			
+			else if(board[0] == pl2 && board[3] == pl2 && board[6] == pl2) // vertical 1
+			{
+				player2Win = true;
+				return player2Win;
+			}
+			
+			if(board[1] == pl2 && board[4] == pl2 && board[7] == pl2) // vertical 2
+			{
+				player2Win = true;
+				return player2Win;
+			}
+			
+			else if(board[2] == pl2 && board[5] == pl2 && board[8] == pl2) // vertical 3
+			{
+				player2Win = true;
+				return player2Win;
+			}
 		}
-		return win;	
+			
 	}
 		
 		
-
+/*
 	//ALLOWED MOVE
 
-	//We also need to check if the move is allowed, when player clicks the squares. That is, we need to check, if the player is the currentPlayer
-	//and if the square is already taken.
-	//if the move is allowed, perform action, which is, assign the selected square to the currentPlayer, change the currentPlayer,
-	//and call a function for the opponent that the currentPlayer moved
+
 
 		public boolean allowedMove(int squareNo, boolean currentPlayer)
 		{
@@ -106,15 +160,13 @@ public class GameChecker extends Main
 			 {
 			 isCurrentPlayer == true;
 			 isCurrentPlayer = squareNo;
-			 
 			 //perform actions, 
 			 
 			 return true;
-			 
-			 }
+		 }
 			 else
-			 {
+		 {
 			 return false;
-			 }
-		}
+		 }
 	}
+}
