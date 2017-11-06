@@ -8,7 +8,7 @@ The object of Tic Tac Toe is to get three in a row. You play on a three by three
 
 # How to play
 
-First off, you need a java based IDE to be able to open the project files. One of the players must host the server, from there on the remaining players needs to run the client project. Once two players are connected the game will start.
+There are two .jar files attached to the wiki. One of the players must host the server, from there on the remaining players needs to run the ttt-client. Once two players are connected the game will start. The remaining 2 players can start a game in a seperate lobby.
 
 # Authors
 
