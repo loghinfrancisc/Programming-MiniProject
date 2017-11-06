@@ -126,4 +126,5 @@ public class ConnectionHandler extends Thread{//this class will be used to handl
 	//need to code a response for what needs to be done when a certain command has been made by the server
 	}
 }
+	
 }
