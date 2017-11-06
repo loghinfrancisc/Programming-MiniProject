@@ -56,11 +56,11 @@ public class Main{
         	handler.output.lobbyMSG="CREATE_GAME_1";
         	handler.send();
         }
-        else if(firstButtonState==1){
+        else if(firstButtonState==1&&ConnectionHandler.createdOne==false){
         	handler.output.lobbyMSG="JOIN_GAME_1";
         	handler.send();
         }
-        else if(firstButtonState==2){
+        else if(firstButtonState==1&&ConnectionHandler.createdOne==true){
         	handler.output.lobbyMSG="CLOSE_GAME_1";
         	handler.send();
         }
@@ -68,15 +68,16 @@ public class Main{
         	  }});
     	 lobby[1].addActionListener(new ActionListener(){
        	  public void actionPerformed(ActionEvent a) {
+       		  System.out.println(ConnectionHandler.createdTwo);
        if(secondButtonState==0){
        	handler.output.lobbyMSG="CREATE_GAME_2";
        	handler.send();
        }
-       else if(secondButtonState==1){
+       else if(secondButtonState==1&&ConnectionHandler.createdTwo==false){
        	handler.output.lobbyMSG="JOIN_GAME_2";
        	handler.send();
        }
-       else if(secondButtonState==2){
+       else if(secondButtonState==1&&ConnectionHandler.createdTwo==true){
        	handler.output.lobbyMSG="CLOSE_GAME_2";
        	handler.send();
        }

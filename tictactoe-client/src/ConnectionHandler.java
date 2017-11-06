@@ -11,8 +11,9 @@ public class ConnectionHandler extends Thread{//this class will be used to handl
 	static ObjectInputStream ois;
 	static Packet incoming;
 	static Packet output;
-	static boolean createdOne;
-	static boolean createdTwo;
+	static boolean updated=true;
+	static volatile boolean createdOne;
+	static volatile boolean createdTwo;
 	static boolean inGame=false;
 	public void send() {
 		try {
@@ -44,11 +45,14 @@ public class ConnectionHandler extends Thread{//this class will be used to handl
 		e.printStackTrace();
 	}
 	if(inGame==false){
+		if(updated){
 	if(incoming.lobbyMSG.startsWith("CREATED_1")){
 		System.out.println("created da ting");
 		createdOne=true;
+		Main.lobby[1].setEnabled(false);
 	}
 	else if(incoming.lobbyMSG.startsWith("CREATED_2")){
+		Main.lobby[0].setEnabled(false);
 		createdTwo=true;
 	}
 	else if(incoming.lobbyMSG.startsWith("STARTED_1")){
@@ -63,11 +67,14 @@ public class ConnectionHandler extends Thread{//this class will be used to handl
 		Main.startGame(2);
 	}
 	else if(incoming.lobbyMSG.startsWith("CLOSED_1")){
+		Main.lobby[1].setEnabled(true);
 		createdOne=false;
 	}
 	else if(incoming.lobbyMSG.startsWith("CLOSED_2")){
+		Main.lobby[0].setEnabled(true);
 		createdTwo=false;
 	}
+		}
 	if(incoming.updateLobby==true){
 		String[] tmp=new String[6];
 		if(incoming.firstGameState==0){
@@ -95,12 +102,12 @@ public class ConnectionHandler extends Thread{//this class will be used to handl
 			tmp[4]="0/2";
 			tmp[5]="Create Game";
 		}
-		if(incoming.secondGameState==1&&createdOne==false){
+		if(incoming.secondGameState==1&&createdTwo==false){
 			tmp[3]="Game #2";
 			tmp[4]="1/2";
 			tmp[5]="Join Game";
 		}
-		if(incoming.secondGameState==1&&createdOne==true){
+		if(incoming.secondGameState==1&&createdTwo==true){
 			tmp[3]="Game #2";
 			tmp[4]="1/2";
 			tmp[5]="Close Game";
