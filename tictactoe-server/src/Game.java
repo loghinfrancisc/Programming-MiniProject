@@ -1,88 +1,50 @@
 import java.net.*;
 import java.io.*;
 public class Game extends Thread{
-protected Socket socket;
 Client player1=null;
 Client player2=null;
-Client currentPlayer=player1;
-char sign;
-public Game(Client pl1, Client pl2, char X, char O) 
+int gameNo;
+public Game(Client pl1, Client pl2, int no) 
 {
 player1=pl1;
 player2=pl2;
-sign.pl1='X';
-sign.pl2='O';
+gameNo=no;
 }
-
-//boolean winCheck = false;
-//boolean tieCheck = false;
 String CMD;
-String outputCMD;
-
-/*
-public boolean startGame(String inputCMD)
-{
-	if(inputCMD.startsWith("START"))
-	{
-		return true;
-	}
-	return false;
-}
-*/
+int square;
 
 //Here we add all of the features of the actual game, once the two clients have connected to each other
 
-void conditionListener(String inputCMD, Client pl1)
+public void conditionListener(String inputCMD, int location, Client pl)
 {
-	if (inputCMD.startsWith("WIN"))
+	square=location;
+	if (inputCMD.startsWith("WIN"))//if the player sends a message that he has won
 	{
-	//won();
-	//winCheck = true;
-	CMD = "WIN";
+	CMD = "LOSE";//send the other player a message that he has lost
 	}
-	
 	else if(inputCMD.startsWith("TIE"))
 	{
-	//boardFilled();
-	//tieCheck = true;
 	CMD = "TIE";
 	}
-}
-
-
-void moveListener(String inputCMD, int location, Client pl1)
-{
-	if (inputCMD.startsWith("MOVE"))
-	{
-		//update move condition
-		System.out.println("Player 1 has marked tile: " + location);
+	else if(inputCMD.startsWith("MOVE")){
+	CMD = "OPPONENT_MOVE";
 	}
+update(pl);
 }
-
 public void update(Client pl1)
 {
 // take all info, send it to client handler (player 2)
-while(true)
-{
 if(player1==pl1)
 {
-player2.output.outputCMD( CMD );
+player2.output.squareNo=square;
+player2.output.packetCMD=CMD;
 player2.send();
 }
 else if(player2==pl1){
-player1.output.outputCMD( CMD );
+player1.output.squareNo=square;
+player1.output.packetCMD=CMD;
 player1.send();
 }
 }
-//BOARD
-
-//Client array for every square of the board, so we can assign each square to a person
-private Client[] board = {
-		null, null, null, 
-		null, null, null, 
-		null, null, null};
-
-
-
 }
 
