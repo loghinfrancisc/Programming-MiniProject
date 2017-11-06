@@ -1,6 +1,6 @@
 # Programming-MiniProject (TIC-TAC-TOE)
 
-This is a server & client TCP based project on the classic game, "Tic-Tac-Toe"
+This is a server & client TCP based project on the classic game, "Tic-Tac-Toe". The server hosts all neccessary information, which the client connects to. Once two clients are connected on the server, the server will start to host the game while the game is handled on the client side.
 
 # Rules
 
