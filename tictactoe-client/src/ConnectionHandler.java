@@ -59,7 +59,6 @@ public class ConnectionHandler extends Thread{//this class will be used to handl
 		inGame=true;
 		gameNO=incoming.gameNo;
 		Main.startGame(1);
-		
 	}
 	else if(incoming.lobbyMSG.startsWith("STARTED_2")){
 		inGame=true;

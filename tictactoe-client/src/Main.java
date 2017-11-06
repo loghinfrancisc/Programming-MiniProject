@@ -64,7 +64,6 @@ public class Main{
         	handler.output.lobbyMSG="CLOSE_GAME_1";
         	handler.send();
         }
-        
         	  }});
     	 lobby[1].addActionListener(new ActionListener(){
        	  public void actionPerformed(ActionEvent a) {
