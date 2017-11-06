@@ -12,4 +12,4 @@ First off, you need a java based IDE to be able to open the project files. One o
 
 # Authors
 
-Michal Grzymski, Marius Mic, Loghin Francisc, Maja Pihl, Jonas Andersen, Roberts Deksna. (MEA 3, AAU)
+Michał Grzymski, Marius Mic, Loghin Francisc, Maja Pihl, Jonas Andersen, Roberts Deksna. (MEA 3, AAU)
