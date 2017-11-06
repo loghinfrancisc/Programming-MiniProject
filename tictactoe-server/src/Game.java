@@ -13,8 +13,6 @@ gameNo=no;
 String CMD;
 int square;
 
-//Here we add all of the features of the actual game, once the two clients have connected to each other
-
 public void conditionListener(String inputCMD, int location, Client pl)
 {
 	square=location;

@@ -14,6 +14,7 @@ public class Packet implements Serializable {
 	public int gameNo=99;
 	public int squareNo=99;
 	int playerNO=99;
+	
 	//Game Checker class
 	public String gameCheckerCommand="";
 }
