@@ -1,172 +1,80 @@
-import java.net.Socket;
-
-public class GameChecker extends Main
-{
-	GameChecker(Socket sock) {
-		super(sock);
-		// TODO Auto-generated constructor stub
+public class GameChecker{
+public static boolean boardFilled(){
+	for(int i=0;i<Main.board.length;i++){
+		if (Main.board[i] == 0){
+			return false;
+		}
 	}
+return true;
+}
 
-
-	//transfered to client side
-	//these functions will be called from the main class when a client will press buttons
-	
-	//initializing the board array for maja, so we don't get a billion errors
-	private Client[] board = {null, null, null, null, null, null, null, null, null};
-	
-	//IS THE BOARD FILLED?
-
-	//add a loop that checks through all of the board array values, and if any one of them is still null, return false. Otherwise, return true
-	public boolean boardFilled(boolean fill) 
-	{
-			for(int i = 0; i < board.length; i++)
+public static boolean winCheck() {		
+			for(int j = 0; j < Main.board.length; j++){//only one loop to check if this player has won. If the other player wins, it will send a message to the server
+				//where the server will send a message to the other player. Meaning we dont need to check for both players
+			if(Main.board[0] == Main.playerNo && Main.board[1] == Main.playerNo && Main.board[2] == Main.playerNo) // horizontal 1
 			{
-				if (board[i] == null)
-				{
-				fill = false;
-				break;
-				}
-			
-				else
-				{
-					fill = true;
-					break;
-				}
-			}
-		return fill;	
-	}
-	
-
-	//player1Win CONDITION
-
-	//add if statements to check through all 8 possible winning conditions in tic tac toe
-	public boolean winCheck() 
-	{
-		//int boardState[] = {0,0,0,0,0,0,0,0,0}; not using ints but array of Clients instead
-		
-		for (int i = 0; i < board.length; i++)
-			for(int j = 0; j < board.length; j++)		
-		{
-			//checks if Player 1 wins 
-			if(board[0] == pl1 && board[1] == pl1 && board[2] == pl1) // horizontal 1
-			{
-				player1Win = true;
-				return player1Win;
+				return true;
 			}
 			
-			else if(board[3] == pl1 && board[4] == pl1 && board[5] == pl1) // horizontal 2
+			else if(Main.board[3] == Main.playerNo && Main.board[4] == Main.playerNo && Main.board[5] == Main.playerNo) // horizontal 2
 			{
-				player1Win = true;
-				return player1Win;
+				return true;
 			}
 			
-			if(board[6] == pl1 && board[7] == pl1 && board[8] == pl1) // horizontal 3
+			else if(Main.board[6] == Main.playerNo && Main.board[7] == Main.playerNo && Main.board[8] == Main.playerNo) // horizontal 3
 			{
-				player1Win = true;
-				return player1Win;
+				return true;
 			}
 			
-			else if(board[0] == pl1 && board[4] == pl1 && board[8] == pl1) // diagonal 1
+			else if(Main.board[0] == Main.playerNo && Main.board[4] == Main.playerNo && Main.board[8] == Main.playerNo) // diagonal 1
 			{
-				player1Win = true;
-				return player1Win;
+				return true;
 			}
 			
-			if(board[6] == pl1 && board[4] == pl1 && board[2] == pl1) // diagonal 2
+			else if(Main.board[6] == Main.playerNo && Main.board[4] == Main.playerNo && Main.board[2] == Main.playerNo) // diagonal 2
 			{
-				player1Win = true;
-				return player1Win;
+				return true;
 			}
 			
-			else if(board[0] == pl1 && board[3] == pl1 && board[6] == pl1) // vertical 1
+			else if(Main.board[0] == Main.playerNo && Main.board[3] == Main.playerNo && Main.board[6] == Main.playerNo) // vertical 1
 			{
-				player1Win = true;
-				return player1Win;
+				return true;
 			}
 			
-			if(board[1] == pl1 && board[4] == pl1 && board[7] == pl1) // vertical 2
+			else if(Main.board[1] == Main.playerNo && Main.board[4] == Main.playerNo && Main.board[7] == Main.playerNo) // vertical 2
 			{
-				player1Win = true;
-				return player1Win;
+				return true;
 			}
 			
-			else if(board[2] == pl1 && board[5] == pl1 && board[8] == pl1) // vertical 3
+			else if(Main.board[2] == Main.playerNo && Main.board[5] == Main.playerNo && Main.board[8] == Main.playerNo) // vertical 3
 			{
-				player1Win = true;
-				return player1Win;
-			}	
-			
-			//checks if Player 2 wins 
-			if(board[0] == pl2 && board[1] == pl2 && board[2] == pl2) // horizontal 1
-			{
-				player2Win = true;
-				return player2Win;
-			}
-			
-			else if(board[3] == pl2 && board[4] == pl2 && board[5] == pl2) // horizontal 2
-			{
-				player2Win = true;
-				return player2Win;
-			}
-			
-			if(board[6] == pl2 && board[7] == pl2 && board[8] == pl2) // horizontal 3
-			{
-				player2Win = true;
-				return player2Win;
-			}
-			
-			else if(board[0] == pl2 && board[4] == pl2 && board[8] == pl2) // diagonal 1
-			{
-				player2Win = true;
-				return player2Win;
-			}
-			
-			if(board[6] == pl2 && board[4] == pl2 && board[2] == pl2) // diagonal 2
-			{
-				player2Win = true;
-				return player2Win;
-			}
-			
-			else if(board[0] == pl2 && board[3] == pl2 && board[6] == pl2) // vertical 1
-			{
-				player2Win = true;
-				return player2Win;
-			}
-			
-			if(board[1] == pl2 && board[4] == pl2 && board[7] == pl2) // vertical 2
-			{
-				player2Win = true;
-				return player2Win;
-			}
-			
-			else if(board[2] == pl2 && board[5] == pl2 && board[8] == pl2) // vertical 3
-			{
-				player2Win = true;
-				return player2Win;
+				return true;
 			}
 		}
-			
+return false;
 	}
-		
-		
-/*
-	//ALLOWED MOVE
-
-
-
-		public boolean allowedMove(int squareNo, boolean currentPlayer)
+public static void allowedMove(int squareNo, boolean currentPlayer)
 		{
-		 if(pl1 == isCurrentPlayer && squareNo == null )  // if conditions are true
+
+		 if(currentPlayer && Main.board[squareNo]==0 && squareNo!=99)  // if conditions are true
 			 {
-			 isCurrentPlayer == true;
-			 isCurrentPlayer = squareNo;
-			 //perform actions, 
+			 Main.yourTurn=false;
+			 Main.board[squareNo]=Main.playerNo;
+			 Main.handler.output.squareNo=squareNo;
+			 if(winCheck()){
+				 Main.handler.output.gameCheckerCommand="WIN";
+				 Main.end("YOU WIN");
+			 }
+			 else if(boardFilled()){
+				 Main.handler.output.gameCheckerCommand="TIE";
+				 Main.end("YOU TIED");
+			 }
+			 else{
+				 Main.handler.output.gameCheckerCommand="MOVE";
+			 }
+			 Main.ownMove(squareNo);
+			 Main.handler.send();
 			 
-			 return true;
-		 }
-			 else
-		 {
-			 return false;
-		 }
+			 }
 	}
 }
